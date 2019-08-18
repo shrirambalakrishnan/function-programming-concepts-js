@@ -55,12 +55,22 @@ switch (process.env.CASE) {
   case "2":
     console.log('---------------------- CASE 2 ----------------------');
 
+    console.log('~~~~~~~~~~~~~~~~~~~ compose ~~~~~~~~~~~~~~~~~~');
     const gradeCalculator = R.compose(calculateGrade, calcPercentage);
     console.log("gradeCalculator = ", gradeCalculator);
 
     students.forEach( (student, index) => {
       grade = gradeCalculator( scoresOutOfTen[index] );
       console.log(`${student} got grade '${grade}' in English`);
+    });
+
+    console.log('~~~~~~~~~~~~~~~~~~~ pipe ~~~~~~~~~~~~~~~~~~');
+    const gradeCalculator2 = R.pipe(calcPercentage, calculateGrade);
+    console.log("gradeCalculator2 = ", gradeCalculator2);
+
+    students.forEach( (student, index) => {
+      let grade2 = gradeCalculator2( scoresOutOfTen[index] );
+      console.log(`${student} got grade '${grade2}' in English`);
     });
 
     break;
