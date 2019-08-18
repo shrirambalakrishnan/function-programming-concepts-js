@@ -1,47 +1,55 @@
-const welcomeUser = (welcomeText, userName) => {
-  console.log(`${welcomeText},  ${userName}`);
-}
-
 let singleUserName = "Shriram";
 let userNames = ["Shriram", "Gowtham", "Kaushik", "Praveen", "Manikandan"];
 
 switch (process.env.CASE) {
   case "1":
+    console.log('-------------------------------- Case 1 --------------------------------');
+
     //`//////////////////////////////////////////////////////////////////
     // Case 1
     // Wecome single user
-    welcomeUser("Good Morning!", singleUserName);
+    const welcomeUserCase1 = (welcomeText, userName) => {
+      console.log(`${welcomeText},  ${userName}`);
+    }
+
+    welcomeUserCase1("Good Morning!", singleUserName);
     break;
     //////////////////////////////////////////////////////////////////////////
 
 
   case "2":
+      console.log('-------------------------------- Case 2 --------------------------------');
+
     ////////////////////////////////////////////////////////////////////////
     // Case 2
     // Welcome multiple users
-    userNames.map( (userName) => welcomeUser("Good Morning!", userName) );
+    const welcomeUserCase2 = (welcomeText, userName) => {
+      console.log(`${welcomeText},  ${userName}`);
+    }
+
+    userNames.map( (userName) => welcomeUserCase2("Good Morning!", userName) );
 
     break;
     ////////////////////////////////////////////////////////////////////////
 
   case "3":
+      console.log('-------------------------------- Case 3 --------------------------------');
+
     ////////////////////////////////////////////////////////////////////////
     // Case 3
     // Welcome multiple users
-    let userNames = ["Shriram", "Gowtham", "Kaushik", "Praveen", "Manikandan"]
-
-    // Override welcomeUser
-    const welcomeUser = (welcomeText) => {
+    const welcomeUserCase3 = (welcomeText) => {
       return (userName) => {
         console.log(`${welcomeText},  ${userName}`);
       }
     }
 
-    let goodMorningGreeting = welcomeUser("Good Morning!");
+    let goodMorningGreetingCase3 = welcomeUserCase3("Good Morning!");
 
-    console.log(goodMorningGreeting);
+    console.log(goodMorningGreetingCase3);
 
-    userNames.map( (userName) => goodMorningGreeting(userName) );
+    userNames.map( (userName) => goodMorningGreetingCase3(userName) );
+
+    break;
     ////////////////////////////////////////////////////////////////////////
-
 }
