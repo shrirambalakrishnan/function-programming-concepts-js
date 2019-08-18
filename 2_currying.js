@@ -38,6 +38,13 @@ switch (process.env.CASE) {
     ////////////////////////////////////////////////////////////////////////
     // Case 3
     // Welcome multiple users
+
+    // Functional concepts
+    // 1. Higher Order function.
+    // 2. Closure.
+    // 3. Currying.
+    // 4. Partial Application
+
     const welcomeUserCase3 = (welcomeText) => {
       return (userName) => {
         console.log(`${welcomeText},  ${userName}`);
@@ -52,4 +59,21 @@ switch (process.env.CASE) {
 
     break;
     ////////////////////////////////////////////////////////////////////////
+
+  case "4":
+      var curry = require("curry");
+
+      const welcomeUserCase4 = (welcomeText, userName) => {
+        console.log(`${welcomeText},  ${userName}`);
+      }
+
+      const welcomeUserCase4Curried = curry(welcomeUserCase4);
+      console.log('--------- welcomeUserCase4Curried --------', welcomeUserCase4Curried);
+
+      let goodMorningGreetingCase4 = welcomeUserCase4Curried("Good Morning!");
+      console.log('--------- goodMorningGreetingCase4 --------', goodMorningGreetingCase4);
+
+      userNames.map( (userName) => goodMorningGreetingCase4(userName) );
+
+      break;
 }
