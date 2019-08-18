@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shrirambalakrishnan/function-programming-concepts-js#readme",
   "dependencies": {
-    "curry": "^1.2.0"
+    "curry": "^1.2.0",
+    "ramda": "^0.26.1"
   }
 }

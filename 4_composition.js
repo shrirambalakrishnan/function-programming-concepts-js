@@ -1,3 +1,5 @@
+const R = require('ramda');
+
 const calcPercentage = (scoreOutOfTen) => {
   return ( scoreOutOfTen / 10 ) * 100;
 }
@@ -37,9 +39,29 @@ const calculateGrade = (percentage) => {
 let students        = ["Shriram", "Balakrishnan"]
 let scoresOutOfTen  = [10, 8]
 
-students.forEach( (student, index) => {
-  studentPercentage = calcPercentage( scoresOutOfTen[index] );
-  studentGrade      = calculateGrade(studentPercentage)
+switch (process.env.CASE) {
+  case "1":
+    console.log('---------------------- CASE 1 ----------------------');
 
-  console.log(`${student} got grade '${studentGrade}' in English`)
-});
+    students.forEach( (student, index) => {
+      studentPercentage = calcPercentage( scoresOutOfTen[index] );
+      studentGrade      = calculateGrade(studentPercentage);
+
+      console.log(`${student} got grade '${studentGrade}' in English`)
+    });
+
+    break;
+
+  case "2":
+    console.log('---------------------- CASE 2 ----------------------');
+
+    const gradeCalculator = R.compose(calculateGrade, calcPercentage);
+    console.log("gradeCalculator = ", gradeCalculator);
+
+    students.forEach( (student, index) => {
+      grade = gradeCalculator( scoresOutOfTen[index] );
+      console.log(`${student} got grade '${grade}' in English`);
+    });
+
+    break;
+}
